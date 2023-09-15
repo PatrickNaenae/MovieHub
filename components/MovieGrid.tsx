@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useGetTopRatedMoviesQuery } from "../app/GlobalRedux/slices/moviesSlice";
 import { useState } from "react";
 import Loading from "../app/loading";
-
+import Placeholder from "react-placeholder";
 
 interface Movie {
 	id: number;
@@ -67,14 +67,23 @@ const MovieGrid = () => {
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 				{top10Movies?.map((movie) => (
 					<div key={movie.id} data-testid='movie-card'>
-						<Image
-							src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-							alt={movie.title}
-                            width={100}
-                            height={100}
-							// placeholder='blur'
-							className='w-full h-auto mb-2'
-						/>
+						<Placeholder
+							type='rect'
+							style={{
+								width: 100,
+								height: 100,
+								backgroundColor: "#ccc",
+							}}
+							ready={!isLoading}>
+							<Image
+								src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+								alt={movie.title}
+								width={100}
+								height={100}
+								// placeholder='blur'
+								className='w-full h-auto mb-2 border rounded-lg'
+							/>
+						</Placeholder>
 						<h3
 							data-testid='movie-title'
 							className='text-xl font-semibold mb-2'>

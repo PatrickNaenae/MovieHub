@@ -48,7 +48,7 @@ const Favorite = () => {
 								// placeholder='blur'
 								width={100}
 								height={100}
-								className='w-full h-auto mb-2'
+								className='w-full h-auto mb-2 border rounded-lg'
 							/>
 							<h3
 								data-testid='movie-title'
