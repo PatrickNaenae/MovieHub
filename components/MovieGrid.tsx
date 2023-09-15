@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useGetTopRatedMoviesQuery } from "../app/GlobalRedux/slices/moviesSlice";
 import { useState } from "react";
 import Loading from "../app/loading";
-import lqip from "lqip-modern";
+
 
 interface Movie {
 	id: number;
@@ -23,7 +23,7 @@ const MovieGrid = () => {
 			const errMsg =
 				"error" in error ? error.error : JSON.stringify(error.data);
 			return (
-				<div className="mt-5 text-center text-2xl text-red-500">
+				<div className='mt-5 text-center text-2xl text-red-500'>
 					<div>An error has occurred:</div>
 					<div>The resource you requested could not be found</div>
 				</div>
@@ -67,21 +67,12 @@ const MovieGrid = () => {
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 				{top10Movies?.map((movie) => (
 					<div key={movie.id} data-testid='movie-card'>
-						{lqip(
-							`https://image.tmdb.org/t/p/w500${movie.poster_path}`
-						).then((result) => {
-							const blurDataURL =
-								result.metadata.type + " " + result.base64data;
-							return (
-								<Image
-									src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-									alt={movie.title}
-									placeholder='blur'
-									blurDataURL={blurDataURL}
-									className='w-full h-auto mb-2'
-								/>
-							);
-						})}
+						<Image
+							src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+							alt={movie.title}
+							placeholder='blur'
+							className='w-full h-auto mb-2'
+						/>
 						<h3
 							data-testid='movie-title'
 							className='text-xl font-semibold mb-2'>
