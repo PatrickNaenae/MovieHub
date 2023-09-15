@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from 'next/image'
 import { useSearchMoviesQuery } from "../app/GlobalRedux/slices/moviesSlice";
 import Loading from "../app/loading";
 
@@ -73,7 +74,7 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ searchTerm }) => {
 							<div
 								key={movie.id}
 								className='movie-result bg-white rounded'>
-								<img
+								<Image
 									src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 									alt={movie.title}
 									className='w-full h-auto mb-2'
