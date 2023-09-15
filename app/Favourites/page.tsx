@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Movie {
 	id: number;
@@ -41,7 +42,7 @@ const Favorite = () => {
 				<div className=' mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 					{favoriteMovies.map((movie) => (
 						<div key={movie.id} data-testid='movie-card'>
-							<img
+							<Image
 								src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 								alt={movie.title}
 								data-testid='movie-poster'
