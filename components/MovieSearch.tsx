@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/image";
 import { useSearchMoviesQuery } from "../app/GlobalRedux/slices/moviesSlice";
 import Loading from "../app/loading";
 
@@ -50,14 +50,16 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ searchTerm }) => {
 
 	return (
 		<div>
-			<div className='movie-search relative px-5 md:px-10 lg:px-24 mt-6'>
+			<div className='movie-search relative px-5 md:px-10 lg:px-24 my-6'>
 				{isLoading && <Loading />}
 
-				<Link
-					className='bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded'
-					href='/Favourites'>
-					Favourite movies
-				</Link>
+				{!isLoading && (
+					<Link
+						className='bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded'
+						href='/Favourites'>
+						Favourite movies
+					</Link>
+				)}
 
 				{showAlert && (
 					<div className='fixed top-0 left-0 w-full p-2 bg-green-100 border border-green-400 text-green-700 text-center'>
@@ -65,9 +67,11 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ searchTerm }) => {
 					</div>
 				)}
 
-				<h2 className='text-2xl font-bold mb-4 mt-10'>
-					Searched Movies
-				</h2>
+				{!isLoading && (
+					<h2 className='text-2xl font-bold mb-4 mt-10'>
+						Searched Movies
+					</h2>
+				)}
 				{!isLoading && data && data.results && (
 					<div className='search-results mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
 						{data.results.map((movie) => (
@@ -77,6 +81,7 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ searchTerm }) => {
 								<Image
 									src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 									alt={movie.title}
+                                    placeholder='blur'
 									className='w-full h-auto mb-2'
 								/>
 								<div className='movie-info'>

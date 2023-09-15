@@ -46,6 +46,7 @@ const Favorite = () => {
 								src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 								alt={movie.title}
 								data-testid='movie-poster'
+                                placeholder='blur'
 								className='w-full'
 							/>
 							<h3
