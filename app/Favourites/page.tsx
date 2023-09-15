@@ -72,7 +72,9 @@ const Favorite = () => {
 					))}
 				</div>
 			) : (
-				<p className="mb-8">You've not added any movie to your favorite movie yet</p>
+				<p className='mb-8'>
+					You&apos;ve not added any movie to your favorite movie yet
+				</p>
 			)}
 			<Link
 				className='bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded'
