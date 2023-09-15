@@ -14,8 +14,7 @@ Before you begin, ensure you have met the following requirements:
 Follow these steps to get the app up and running locally:
 
 1. Clone the repository to your local machine:
-
-   ```shell
+  ```shell
    git clone https://github.com/PatrickNaenae/MovieHub.git
    ```
 
@@ -30,13 +29,11 @@ npm install
 ```
 
 4. Create a .env file in the root directory and add your API key:
-
 ```shell
 REACT_APP_API_KEY=<YOUR_API_KEY>
 ```
 
 5. Start the development server:
-
 ```shell
 npm start
 ```
@@ -46,6 +43,9 @@ npm start
 ## Usage
 - Use the search bar to find movies by title or keyword.
 - Click on a movie title to view details such as release date, title, runtime and overview.
+- Click on Add to Favourites to save your favourites movies so you can find them easily
+- Click on Favourite Movies to see all the movies you've saved to your favourite movies page
+- Click on Remove from Favourite to remove movies from favourite page
 Enjoy exploring movies!
 
 ## Contributing

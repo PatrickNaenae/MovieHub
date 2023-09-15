@@ -53,7 +53,7 @@ const MovieGrid = () => {
 			<Link
 				className='bg-blue-500 hover:bg-blue-700 text-white text-sm py-2 px-4 rounded'
 				href='/Favourites'>
-				Click to see your favorites movies
+				Favourite movies
 			</Link>
 
 			{showAlert && (
