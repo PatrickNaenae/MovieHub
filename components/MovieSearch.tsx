@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchMoviesQuery } from "../app/GlobalRedux/slices/moviesSlice";
 import Loading from "../app/loading";
+import lqip from "lqip-modern";
 
 interface MovieSearchProps {
 	searchTerm: string;
@@ -78,12 +79,24 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ searchTerm }) => {
 							<div
 								key={movie.id}
 								className='movie-result bg-white rounded'>
-								<Image
-									src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-									alt={movie.title}
-                                    placeholder='blur'
-									className='w-full h-auto mb-2'
-								/>
+								{lqip(
+									`https://image.tmdb.org/t/p/w500${movie.poster_path}`
+								).then((result) => {
+									const blurDataURL =
+										result.metadata.type +
+										" " +
+										result.base64data;
+
+									return (
+										<Image
+											src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+											alt={movie.title}
+											placeholder='blur'
+											blurDataURL={blurDataURL}
+											className='w-full h-auto mb-2'
+										/>
+									);
+								})}
 								<div className='movie-info'>
 									<Link
 										href={`/movie/${movie.id}`}
